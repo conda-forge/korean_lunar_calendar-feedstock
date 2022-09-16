@@ -18,13 +18,17 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python =2.7|>=3.5
   run:
-    - python
+    - python =2.7|>=3.5
 
 test:
   imports:
     - korean_lunar_calendar
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/usingsky/korean_lunar_calendar_py
