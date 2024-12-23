@@ -7,26 +7,28 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: eb2c485124a061016926bdea6d89efdf9b9fdbf16db55895b6cf1e5bec17b857
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python =2.7|>=3.5
+    - setuptools
+    - python {{ python_min }}
   run:
-    - python =2.7|>=3.5
+    - python >={{ python_min }}
 
 test:
   imports:
     - korean_lunar_calendar
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
